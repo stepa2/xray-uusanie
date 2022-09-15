@@ -7372,6 +7372,8 @@
     <ClInclude Include="script_wallmarks_manager.h">
       <Filter>Core\Client\Effects</Filter>
     </ClInclude>
+    <ClInclude Include="NewZoomFlag.h" />
+    <ClInclude Include="new_sds.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="damage_manager.cpp">
