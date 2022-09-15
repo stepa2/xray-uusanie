@@ -76,6 +76,16 @@ void CUILogsWnd::Update()
 
 	if (!m_items_ready.empty())
 	{
+		// Sort news by date correctly
+		struct {
+			bool operator()(CUIWindow* x, CUIWindow* y) {
+				CUINewsItemWnd* a = smart_cast<CUINewsItemWnd*>(x);
+				CUINewsItemWnd* b = smart_cast<CUINewsItemWnd*>(y);
+				return a->receive_time > b->receive_time;
+			}
+		} sortNewsDesc;
+		std::sort(m_items_ready.begin(), m_items_ready.end(), sortNewsDesc);
+
 		WINDOW_LIST::iterator it = m_items_ready.begin();
 		WINDOW_LIST::iterator it_e = m_items_ready.end();
 		for (; it != it_e; ++it)
@@ -177,6 +187,14 @@ void CUILogsWnd::ReLoadNews()
 
 	VERIFY(m_filter_news && m_filter_talk);
 	GAME_NEWS_VECTOR& news_vector = Actor()->game_news_registry->registry().objects();
+
+	// Sort news by date correctly
+	struct {
+		bool operator()(GAME_NEWS_DATA& a, GAME_NEWS_DATA& b) {
+			return a.receive_time < b.receive_time;
+		}
+	} sortNewsDesc;
+	std::sort(news_vector.begin(), news_vector.end(), sortNewsDesc);
 
 	//	u32 currentNews = 0;
 

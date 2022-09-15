@@ -5,6 +5,8 @@
 #include "PhraseDialog.h"
 #include "string_table.h"
 
+#include "ai_space.h"
+#include "Script_Game_Object.h"
 
 SSpecificCharacterData::SSpecificCharacterData()
 {
@@ -125,6 +127,32 @@ void CSpecificCharacter::load_shared(LPCSTR)
 		data()->m_ActorDialogs.push_back(dialog_name);
 	}
 
+	luabind::functor<luabind::object> funct;
+	if (ai().script_engine().functor("_G.CSpecificCharacterDialogList", funct))
+	{
+		luabind::object table = luabind::newtable(ai().script_engine().lua());
+		int i = 1;
+		for (auto const &dialog : data()->m_ActorDialogs) {
+			table[i] = dialog.c_str();
+			i++;
+		}
+		auto character_name = item_data.id.c_str();
+		luabind::object output = funct(character_name, table);
+		if (output && output.type() == LUA_TTABLE) {
+			data()->m_ActorDialogs.clear();
+			luabind::object::iterator i = output.begin();
+			luabind::object::iterator e = output.end();
+			for (; i != e; ++i) {
+				luabind::object v = *i;
+				if (v.type() == LUA_TSTRING) {
+					shared_str dialog_name = luabind::object_cast<LPCSTR>(v);
+					//Msg("character_id %s, dialog_name %s", character_name, dialog_name.c_str());
+					data()->m_ActorDialogs.push_back(dialog_name);
+				}
+			}
+		}
+	}
+
 	data()->m_icon_name = pXML->Read("icon", 0, "ui_npc_u_barman");
 
 
@@ -238,6 +266,78 @@ void CSpecificCharacter::load_shared(LPCSTR)
 		MoneyDef().min_money = 0;
 		MoneyDef().max_money = 0;
 		MoneyDef().inf_money = false;
+	}
+
+	luabind::functor<luabind::object> init_funct;
+	if (ai().script_engine().functor("_G.CSpecificCharacterInit", init_funct))
+	{
+		luabind::object table = luabind::newtable(ai().script_engine().lua());
+		table["name"] = Name();
+		table["bio"] = Bio().c_str();
+		table["community"] = Community().id().c_str();
+		table["icon"] = data()->m_icon_name.c_str();
+		table["start_dialog"] = data()->m_StartDialog.c_str();
+		table["panic_threshold"] = panic_threshold();
+		table["hit_probability_factor"] = hit_probability_factor();
+		table["crouch_type"] = crouch_type();
+		table["mechanic_mode"] = upgrade_mechanic();
+		table["critical_wound_weights"] = critical_wound_weights();
+		table["supplies"] = SupplySpawn();
+		table["visual"] = Visual();
+		table["npc_config"] = NpcConfigSect();
+		table["snd_config"] = sound_voice_prefix();
+		table["terrain_sect"] = terrain_sect().c_str();
+		table["rank_min"] = RankDef().min;
+		table["rank_max"] = RankDef().max;
+		table["reputation_min"] = ReputationDef().min;
+		table["reputation_max"] = ReputationDef().max;
+		table["money_min"] = MoneyDef().min_money;
+		table["money_max"] = MoneyDef().max_money;
+		table["money_infinitive"] = MoneyDef().inf_money;
+		auto character_name = item_data.id.c_str();
+		luabind::object output = init_funct(character_name, table);
+		if (output && output.type() == LUA_TTABLE) {
+			data()->m_sGameName = luabind::object_cast<LPCSTR>(output["name"]);
+			data()->m_sBioText = CStringTable().translate(luabind::object_cast<LPCSTR>(output["bio"]));
+
+			data()->m_Community.set(luabind::object_cast<LPCSTR>(output["community"]));
+			if (data()->m_Community.index() == NO_COMMUNITY_INDEX)
+				Debug.fatal(DEBUG_INFO, "wrong 'community' '%s' in specific character %s ", luabind::object_cast<LPCSTR>(output["community"]), *m_OwnId);
+
+			data()->m_icon_name = luabind::object_cast<LPCSTR>(output["icon"]);
+			data()->m_StartDialog = output["start_dialog"].type() == LUA_TSTRING ? luabind::object_cast<LPCSTR>(output["start_dialog"]) : NULL;
+			data()->m_fPanic_threshold = luabind::object_cast<float>(output["panic_threshold"]);
+			data()->m_fHitProbabilityFactor = luabind::object_cast<float>(output["hit_probability_factor"]);
+			data()->m_crouch_type = luabind::object_cast<int>(output["crouch_type"]);
+			data()->m_upgrade_mechanic = luabind::object_cast<bool>(output["mechanic_mode"]);
+			data()->m_critical_wound_weights = luabind::object_cast<LPCSTR>(output["critical_wound_weights"]);
+			data()->m_sVisual = luabind::object_cast<LPCSTR>(output["visual"]);
+			data()->m_sNpcConfigSect = luabind::object_cast<LPCSTR>(output["npc_config"]);
+			data()->m_sound_voice_prefix = luabind::object_cast<LPCSTR>(output["snd_config"]);
+			data()->m_terrain_sect = luabind::object_cast<LPCSTR>(output["terrain_sect"]);
+
+			data()->m_sSupplySpawn = luabind::object_cast<LPCSTR>(output["supplies"]);
+			if (!data()->m_sSupplySpawn.empty())
+			{
+				xr_string& str = data()->m_sSupplySpawn;
+				xr_string::size_type pos = str.find("\\n");
+				while (xr_string::npos != pos)
+				{
+					str.replace(pos, 2, "\n");
+					pos = str.find("\\n", pos + 1);
+				}
+			}
+
+			RankDef().min = _min(luabind::object_cast<int>(output["rank_min"]), luabind::object_cast<int>(output["rank_max"]));
+			RankDef().max = _max(luabind::object_cast<int>(output["rank_min"]), luabind::object_cast<int>(output["rank_max"]));
+
+			ReputationDef().min = _min(luabind::object_cast<int>(output["reputation_min"]), luabind::object_cast<int>(output["reputation_max"]));
+			ReputationDef().max = _max(luabind::object_cast<int>(output["reputation_min"]), luabind::object_cast<int>(output["reputation_max"]));
+
+			MoneyDef().min_money = _min(luabind::object_cast<int>(output["money_min"]), luabind::object_cast<int>(output["money_max"]));
+			MoneyDef().max_money = _max(luabind::object_cast<int>(output["money_min"]), luabind::object_cast<int>(output["money_max"]));
+			MoneyDef().inf_money = luabind::object_cast<bool>(output["money_infinitive"]);
+		}
 	}
 
 #endif

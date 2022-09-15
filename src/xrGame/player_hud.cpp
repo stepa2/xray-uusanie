@@ -1263,7 +1263,7 @@ player_hud_motion_container* player_hud::get_hand_motions(LPCSTR section)
 		if (phm->section == section)
 			return &phm->pm;
 	}
-
+	
 	hand_motions* res = xr_new<hand_motions>();
 	res->section = section;
 	res->pm.load(m_model, section);
