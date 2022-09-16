@@ -1,0 +1,239 @@
+//-----------------------------------------------------------------------------
+//	SOURCE_DLL_WIN32_BASE.VPC
+//
+//	Base Settings for all Source(TM) Projects
+//-----------------------------------------------------------------------------
+
+$MacroRequired				"SRCDIR"
+$MacroRequired				"OUTBINNAME"	"$PROJECTNAME"
+$MacroRequired				"OUTBINDIR"
+
+$MacroRequiredAllowEmpty	"_UNITYSUBDIR"
+
+$Macro						"_SUBDIRSUFFIX"		"$PLATSUBDIR$_UNITYSUBDIR"
+
+$Macro OUTBINDIR	"$OUTBINDIR$PLATSUBDIR"
+
+$Macro LIBBUILD	"$SRCDIR\lib\build_$PLATNAME"
+
+$Include "$SRCDIR\vpc_scripts\source_win32_base.vpc"
+
+// Disable frame pointer omission to allow fast stack walking, necessary for
+// good ETW profiling.
+$Conditional  NOFPO  "1"
+
+$IgnoreRedundancyWarning	"ON"
+
+// Common Configuration
+$Configuration
+{
+	$General
+	{
+		$OutputDirectory					"$OUTBINDIR"
+
+		$TargetName	"$OUTBINNAME"
+		$ConfigurationType					"Dynamic Library (.dll)"
+		$UseOfMFC
+		$UseOfATL
+		$MinimizeCRTUseInATL
+		$CharacterSet						"Use Multi-Byte Character Set"
+		$CommonLanguageRuntimeSupport
+	}
+
+	$Compiler
+	{
+		$WarningLevel						"Level 4 (/W4)"
+
+		$PreprocessorDefinitions			"$BASE;PLATFORM_64BITS;WIN64;_WIN64;COMPILER_MSVC64" [$WIN64]
+		$PreprocessorDefinitions			"$BASE;COMPILER_MSVC32" [$WIN32]		
+		$PreprocessorDefinitions			"$BASE;COMPILER_MSVC;_DLL_EXT=$_DLL_EXT"
+		$PreprocessorDefinitions			"$BASE;DLLNAME=$OUTBINNAME"		
+
+		$EnableStringPooling				"Yes (/GF)"
+		$EnableC++Exceptions				"No"
+		$BasicRuntimeChecks					"Default"
+		$EnableEnhancedInstructionSet
+		$FloatingPointModel					"Fast (/fp:fast)"
+
+		$ForceConformanceInForLoopScope		"Yes (/Zc:forScope)"
+		$EnableRunTimeTypeInfo				"Yes (/GR)"
+
+		$Create/UsePrecompiledHeader		"Not Using Precompiled Headers"
+		$Create/UsePCHThroughFile
+		$PrecompiledHeaderFile
+
+		$CompileAs							"Compile as C++ Code (/TP)"
+		$UseFullPaths						"Yes (/FC)"
+
+		$AdditionalOptions					"$BASE /Zm200"
+	}
+
+	$Compiler [$WIN32]
+	{
+		$EnableEnhancedInstructionSet	"Streaming SIMD Extensions (/arch:SSE)"
+	}
+	
+	$Linker
+	{
+		$AdditionalLibraryDirectories		"$LIBBUILD"
+
+		$GenerateDebugInfo					"Yes (/DEBUG)"
+
+		$SubSystem							"Windows (/SUBSYSTEM:WINDOWS)"
+
+		$AdditionalDependencies				"$BASE shell32.lib user32.lib advapi32.lib gdi32.lib comdlg32.lib ole32.lib" [$WIN32||$WIN64]
+		$TargetMachine						"MachineX86 (/MACHINE:X86)"	[$WIN32]
+		$TargetMachine						"MachineX64 (/MACHINE:X64)"	[$WIN64]
+		// Suppress this pointless warning using the undocumented /ignore linker switch
+		// schemalib.lib(schemaclassinfo.obj) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+		$AdditionalOptions					"$BASE /ignore:4221"
+
+		$ImportLibrary 							"$LIBBUILD/$(TargetName).lib"
+
+		$ImageHasSafeExceptionHandlers		"false"
+	}
+	
+	$Resources
+	{
+		// General
+		$PreprocessorDefinitions			"$BASE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;%(PreprocessorDefinitions)"
+		$Culture							"English (United States) (0x409)"			
+	}
+
+	$PreBuildEvent
+	{
+		$CommandLine		"$CRCCHECK"
+	}
+}
+
+$Configuration "Debug"
+{
+	$General	
+	{
+		// General
+		$IntermediateDirectory				".\Debug$_SUBDIRSUFFIX"
+
+		// Project Defaults
+		$WholeProgramOptimization
+	}
+
+	$Compiler
+	{
+		$DebugInformationFormat				"Program Database for Edit & Continue (/ZI)" [$WIN32]
+		$DebugInformationFormat				"Program Database (/Zi)" [$WIN64]	
+
+		// Optimization
+		$Optimization						"Disabled (/Od)"
+		$InlineFunctionExpansion
+		$EnableIntrinsicFunctions
+		$FavorSizeOrSpeed
+
+		// Preprocessor
+		$PreprocessorDefinitions			"$BASE;WIN32;_WIN32;_DEBUG;DEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)"
+
+		// Code Generation
+		$RuntimeLibrary						"Multi-threaded Debug (/MTd)"
+		$BufferSecurityCheck				"Yes"
+	}
+
+	$Linker
+	{
+		// General
+		$EnableIncrementalLinking			"Yes (/INCREMENTAL)"
+
+		// Input
+		$IgnoreSpecificLibrary				"libc;libcd;libcmt;libcpmt;libcpmt1"
+
+		// System
+
+		// DYNAMICBASE/ASLR in debug builds is annoying and not helpful.
+		$RandomizedBaseAddress				"false"
+
+		// Optimization
+		$References
+		$EnableCOMDATFolding				
+	}
+
+	$Resources
+	{
+		// General
+		$PreprocessorDefinitions			"$BASE;_DEBUG"	
+	}
+}
+
+$Configuration "Release"
+{
+	$General	
+	{
+		$IntermediateDirectory			".\Release$_SUBDIRSUFFIX"	[!$RETAIL && !$PROFILE]
+		$IntermediateDirectory			".\Retail$_SUBDIRSUFFIX"	[$RETAIL]
+		$IntermediateDirectory			".\Profile$_SUBDIRSUFFIX"	[!$RETAIL && $PROFILE]
+
+		// Project Defaults
+
+		$WholeProgramOptimization			"Use Link Time Code Generation" [$LTCG]
+	}
+
+	$Compiler
+	{
+		$DebugInformationFormat				"Program Database (/Zi)"
+
+		// Optimization
+		$Optimization						"Maximize Speed (/O2)"
+		$InlineFunctionExpansion			"Any Suitable (/Ob2)"
+		$EnableIntrinsicFunctions			"Yes (/Oi)"
+		$FavorSizeOrSpeed					"Favor Fast Code (/Ot)"
+
+		// Preprocessor
+		$PreprocessorDefinitions			"$BASE;WIN32;_WIN32;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_ALLOW_RUNTIME_LIBRARY_MISMATCH;_ALLOW_ITERATOR_DEBUG_LEVEL_MISMATCH;_ALLOW_MSC_VER_MISMATCH;%(PreprocessorDefinitions)"
+		$PreprocessorDefinitions			"$BASE;RELEASEASSERTS" [$RELEASEASSERTS]
+
+		// Code Generation
+		$RuntimeLibrary						"Multi-threaded (/MT)"
+		$BufferSecurityCheck                "No"	[$RETAIL]
+		$BufferSecurityCheck                "Yes"	[!$RETAIL]
+
+		// Advanced
+
+		// Enable extra debugging information. This switch requires VS 2013 Update 3.
+		// With VS 2013 make sure that Edit-And-Continue is disabled in the debugger settings so that
+		// the debugger uses the enhanced debug information.
+		// http://randomascii.wordpress.com/2013/09/11/debugging-optimized-codenew-in-visual-studio-2012/
+		$AdditionalOptions					"$BASE /Zo"
+		$AdditionalOptions					"$BASE /Oy-"	[$NOFPO]
+	}
+
+	$Linker
+	{
+		// General
+		$EnableIncrementalLinking			"No (/INCREMENTAL:NO)"
+
+		// Input
+		$IgnoreSpecificLibrary				"libc;libcd;libcmtd;libcpmtd;libcpmtd0;libcpmtd1"
+
+		// System
+
+		// RandomizeBaseAddress (/DYNAMICBASE, /ASLR) is a hugely important security setting.
+		// However it can cause confusion during development and can make tracking down certain
+		// bugs tricky by making code/stack/heap addresses change between runs. Enable for retail,
+		// but disable for development builds.
+		$RandomizedBaseAddress				"true" [$RETAIL]
+		$RandomizedBaseAddress				"false" [!$RETAIL]
+
+		// Optimization
+		$References							"Eliminate Unreferenced Data (/OPT:REF)"
+		// COMDAT folding can be very confusing when debugging and profiling because it can
+		// cause execution to go through nonsensical functions (that happen to be binary
+		// equivalent to the logical function). The performance benefit is small enough that
+		// it is not worth enabling in the development builds. It should be enabled on retail
+		// builds.
+		$EnableCOMDATFolding				"Remove Redundant COMDATs (/OPT:ICF)" [$RETAIL]
+		$EnableCOMDATFolding				"No (/OPT:NOICF)" [!$RETAIL]					
+	}
+
+	$Resources
+	{
+		// General
+		$PreprocessorDefinitions			"$BASE;NDEBUG"				
+	}
+}

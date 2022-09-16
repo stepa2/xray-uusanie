@@ -1,0 +1,33 @@
+//-----------------------------------------------------------------------------
+//	DEFAULT.VGC
+//
+//	Configurations for all Source(TM) Projects
+//-----------------------------------------------------------------------------
+
+$Project "core_st"
+{
+	"core\core_st.vpc"
+}
+
+$Project "core_dyn"
+{
+	"core\core_dyn.vpc"
+}
+
+$Project "memory"
+{
+	"memory\memory.vpc"
+}
+
+$Group "istok"
+{
+	"core_st"
+	"core_dyn"
+	"memory"
+}
+
+
+//$Project "actbusy"
+//{
+//	"engine_systems\tools\actbusy\actbusy.vpc" [$WINDOWS]
+//}

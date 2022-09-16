@@ -1,0 +1,20 @@
+﻿
+$Macro PLATSUBDIR		"\win32" [$WIN32]
+$Macro PLATNAME			"win32"	[$WIN32]
+
+$Macro PLATSUBDIR		"\win64"	[$WIN64]
+$Macro PLATNAME			"win64"	[$WIN64]
+
+$Macro PLATSUBDIR		"\linux32" [$LINUX32]
+$Macro PLATNAME			"linux32" [$LINUX32]
+
+$Macro PLATSUBDIR		"\osx32" [$OSX32]
+$Macro PLATNAME			"osx32" [$OSX32]
+
+$Macro PLATSUBDIR_SEP "\$PLATNAME"
+
+
+$Macro VSVERSION        "vs2022" [$VS2022]
+$Macro VSVERSION        "vs2019" [$VS2019]
+$Macro VSVERSION        "vs2015" [$VS2015]
+$Macro VSVERSION        "vs2013" [$VS2013]

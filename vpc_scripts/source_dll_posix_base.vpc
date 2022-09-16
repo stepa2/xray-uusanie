@@ -1,0 +1,27 @@
+
+$Include "$SRCDIR\vpc_scripts\source_posix_base.vpc"
+
+
+$MacroRequired	 "OUTBINNAME"	"$PROJECTNAME"
+$MacroRequired	 "OUTBINDIR"	"$SRCDIR\..\bin"
+
+
+// General configuration info.
+$Configuration
+{
+	$General
+	{
+		$ConfigurationType				"Dynamic Library (.dll)"
+		$GameOutputFile					"$OUTBINDIR/$OUTBINNAME$OUTDLLEXT"
+	}
+
+	$Compiler
+	{
+		$PreprocessorDefinitions		"$BASE;DLLNAME=$OUTBINNAME"
+	}
+
+	$Linker
+	{
+		$OutputFile					"$(OBJ_DIR)/$OUTBINNAME$OUTDLLEXT"
+	}
+}

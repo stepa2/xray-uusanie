@@ -1,0 +1,35 @@
+//-----------------------------------------------------------------------------
+//	source_base.VPC
+//
+//  This is the base VPC file that is included by all others, on all platforms.
+//
+//	Project Script
+//-----------------------------------------------------------------------------
+
+$MacroRequired "PROJECT_UPPER"
+
+$Configuration "Debug"
+{
+	$Compiler
+	{
+		$PreprocessorDefinitions		"VPC"
+	}
+}
+
+$Configuration "Release"
+{
+	$Compiler
+	{
+		$PreprocessorDefinitions		"VPC"
+	}
+}
+
+$Configuration
+{
+	$Compiler
+	{
+		$PreprocessorDefinitions		"$BASE;_RETAIL"		[$RETAIL]
+		$PreprocessorDefinitions		"$BASE;IK_PROJ=$PROJECT_UPPER;IK_PROJ_$PROJECT_UPPER"
+		$AdditionalIncludeDirectories		"$SRCDIR\;$BASE"
+	}
+}
