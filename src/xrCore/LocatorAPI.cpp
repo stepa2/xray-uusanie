@@ -9,7 +9,7 @@
 #include <direct.h>
 #include <fcntl.h>
 #include <sys\stat.h>
-#include <experimental\filesystem>
+#include <filesystem>
 #pragma warning(default:4995)
 
 #include "FS_internal.h"
@@ -34,7 +34,7 @@ CLocatorAPI* xr_FS = NULL;
 # define FSLTX "fsgame.ltx"
 #endif
 
-std::experimental::filesystem::path fsRoot;
+std::filesystem::path fsRoot;
 
 struct _open_file
 {
@@ -677,18 +677,18 @@ static void searchForFsltx(const char* fs_name, string_path& fsltxPath)
 	}
 
 	//try in working dir
-	if (std::experimental::filesystem::exists(realFsltxName))
+	if (std::filesystem::exists(realFsltxName))
 	{
 		xr_strcpy(fsltxPath, realFsltxName);
 		return;
 	}
 
-	auto tryPathFunc = [realFsltxName](std::experimental::filesystem::path possibleLocationFsltx,
+	auto tryPathFunc = [realFsltxName](std::filesystem::path possibleLocationFsltx,
 	                                   string_path& fsltxPath) -> bool
 	{
 		possibleLocationFsltx.append(realFsltxName);
 
-		if (std::experimental::filesystem::exists(possibleLocationFsltx))
+		if (std::filesystem::exists(possibleLocationFsltx))
 		{
 			xr_strcpy(fsltxPath, possibleLocationFsltx.generic_string().c_str());
 			return true;
@@ -703,7 +703,7 @@ static void searchForFsltx(const char* fs_name, string_path& fsltxPath)
 	if (tryPathFunc(Core.ApplicationPath, fsltxPath)) return;
 
 	//parent directory again
-	std::experimental::filesystem::path test_path;
+	std::filesystem::path test_path;
 	test_path.assign(Core.ApplicationPath);
 	test_path.append("../");
 
@@ -719,7 +719,7 @@ IReader* CLocatorAPI::setup_fs_ltx(LPCSTR fs_name)
 	              make_string("Cannot find fsltx file: \"%s\"\nCheck your working directory", fs_name));
 	xr_strlwr(fs_path);
 	fsRoot = fs_path;
-	fsRoot = std::experimental::filesystem::absolute(fsRoot);
+	fsRoot = std::filesystem::absolute(fsRoot);
 	fsRoot = fsRoot.parent_path();
 
 	Msg("using fs-ltx %s", fs_path);
@@ -935,7 +935,7 @@ xr_vector<char*>* CLocatorAPI::file_list_open(const char* _path, u32 flags)
 {
 	R_ASSERT(_path);
 	VERIFY(flags);
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes();
 
 	string_path N;
@@ -997,7 +997,7 @@ int CLocatorAPI::file_list(FS_FileSet& dest, LPCSTR path, u32 flags, LPCSTR mask
 {
 	R_ASSERT(path);
 	VERIFY(flags);
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes();
 
 	string_path N;
@@ -1316,7 +1316,7 @@ void CLocatorAPI::copy_file_to_build(T*& r, LPCSTR source_name)
 
 bool CLocatorAPI::check_for_file(LPCSTR path, LPCSTR _fname, string_path& fname, const file*& desc)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes();
 
 	// correct path
@@ -1445,7 +1445,7 @@ void CLocatorAPI::w_close(IWriter*& S)
 
 CLocatorAPI::files_it CLocatorAPI::file_find_it(LPCSTR fname)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes();
 
 	file desc_f;
@@ -1615,7 +1615,7 @@ return get_path(initial)->_update(dest,src);
 
 u32 CLocatorAPI::get_file_age(LPCSTR nm)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes();
 
 	files_it I = file_find_it(nm);
@@ -1624,7 +1624,7 @@ u32 CLocatorAPI::get_file_age(LPCSTR nm)
 
 void CLocatorAPI::set_file_age(LPCSTR nm, u32 age)
 {
-	// проверить нужно ли пересканировать пути
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	check_pathes();
 
 	// set file
