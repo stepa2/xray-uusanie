@@ -4,26 +4,330 @@
 //	Configurations for all Source(TM) Projects
 //-----------------------------------------------------------------------------
 
-$Project "core_st"
+$Project "xrAPI"
 {
-	"core\core_st.vpc"
+	"xrAPI\xrAPI.vpc"
 }
 
-$Project "core_dyn"
+$Project "xrCDB"
 {
-	"core\core_dyn.vpc"
+	"xrCDB\xrCDB.vpc"
 }
 
-$Project "memory"
+$Project "xrCore"
 {
-	"memory\memory.vpc"
+	"xrCore\xrCore.vpc"
 }
 
-$Group "istok"
+$Project "xrCPU_Pipe"
 {
-	"core_st"
-	"core_dyn"
-	"memory"
+	"xrCPU_Pipe\xrCPU_Pipe.vpc"
+}
+
+$Project "xrEngine"
+{
+	"xrEngine\xrEngine.vpc"
+}
+
+$Project "xrGame"
+{
+	"xrGame\xrGame.vpc"
+}
+
+$Project "xrGame_ServerEnt"
+{
+	"xrGame\xrGame_ServerEnt.vpc"
+}
+
+$Project "xrGame_ServerEnt_Factory"
+{
+	"xrGame\xrGame_ServerEnt_Factory.vpc"
+}
+
+
+$Project "xrNetworking"
+{
+	"xrNetworking\xrNetworking.vpc"
+}
+
+$Project "xrParticles"
+{
+	"xrParticles\xrParticles.vpc"
+}
+
+$Project "xrPhysics"
+{
+	"xrPhysics\xrPhysics.vpc"
+}
+
+$Project "xrRender_r1"
+{
+	"xrRender\xrRender_r1.vpc"
+}
+
+$Project "xrRender_r2"
+{
+	"xrRender\xrRender_r2.vpc"
+}
+
+$Project "xrRender_r3"
+{
+	"xrRender\xrRender_r3.vpc"
+}
+
+$Project "xrRender_r4"
+{
+	"xrRender\xrRender_r4.vpc"
+}
+
+$Project "xrRenderLib"
+{
+	"xrRenderLib\xrRenderLib.vpc"
+}
+
+$Project "xrRenderLib_DX9"
+{
+	"xrRenderLib\xrRenderLib_DX9.vpc"
+}
+
+$Project "xrRenderLib_DX10"
+{
+	"xrRenderLib\xrRenderLib_DX9.vpc"
+}
+
+$Project "xrSound"
+{
+	"xrSound\xrSound.vpc"
+}
+
+$Project "xrXMLParser"
+{
+	"xrXMLParser\xrXMLParser.vpc"
+}
+
+$Project "crypto"
+{
+	"crypto\crypto.vpc"
+}
+
+$Project "editor_properties"
+{
+	"editor_properties\editor_properties.vpc"
+}
+
+
+$Project "ECore"
+{
+	"sdk\ECore\ECore.vpc"
+}
+
+$Project "editor_actor"
+{
+	"sdk\editor_actor\editor_actor.vpc"
+}
+
+$Project "editor_level"
+{
+	"sdk\editor_level\editor_level.vpc"
+}
+
+$Project "editor_particle"
+{
+	"sdk\editor_particle\editor_particle.vpc"
+}
+
+$Project "editor_shader"
+{
+	"sdk\editor_shader\editor_shader.vpc"
+}
+
+$Project "ETools"
+{
+	"sdk\ETools\ETools.vpc"
+}
+
+$Project "xrCompress"
+{
+	"sdk\xrCompress\xrCompress.vpc"
+}
+
+$Project "xrDO_Light"
+{
+	"sdk\xrDO_Light\xrDO_Light.vpc"
+}
+
+$Project "xrLC"
+{
+	"sdk\xrLC\xrLC.vpc"
+}
+
+$Project "xrLC_Light"
+{
+	"sdk\xrLC_Light\xrLC_Light.vpc"
+}
+
+
+$Project "cximage"
+{
+	"thirdparty\cximage\cximage.vpc"
+}
+
+$Project "discord"
+{
+	"thirdparty\discord\discord.vpc"
+}
+
+$Project "dxerr"
+{
+	"thirdparty\dxerr\dxerr.vpc"
+}
+
+$Project "jpeg"
+{
+	"thirdparty\jpeg\jpeg.vpc"
+}
+
+$Project "lua_extensions"
+{
+	"thirdparty\lua_extensions\lua_extensions.vpc"
+}
+
+$Project "luabind"
+{
+	"thirdparty\luabind\luabind.vpc"
+}
+
+$Project "luajit"
+{
+	"thirdparty\luajit\luajit.vpc"
+}
+
+$Project "luajit_buildvm"
+{
+	"thirdparty\luajit\luajit_buildvm.vpc"
+}
+
+$Project "luajit_minilua"
+{
+	"thirdparty\luajit\luajit_minilua.vpc"
+}
+
+$Project "nvdxt"
+{
+	"thirdparty\nvdxt\nvdxt.vpc"
+}
+
+$Project "nvmeshmender"
+{
+	"thirdparty\nvmeshmender\nvmeshmender.vpc"
+}
+
+$Project "nvtristrip"
+{
+	"thirdparty\nvtristrip\nvtristrip.vpc"
+}
+
+$Project "nvtt"
+{
+	"thirdparty\nvtt\nvtt.vpc"
+}
+
+$Project "ode"
+{
+	"thirdparty\ode\ode.vpc"
+}
+
+$Project "ogg"
+{
+	"thirdparty\ogg\ogg.vpc"
+}
+
+$Project "openal"
+{
+	"thirdparty\openal\openal.vpc"
+}
+
+$Project "openssl"
+{
+	"thirdparty\openssl\openssl.vpc"
+}
+
+$Project "qslim"
+{
+	"thirdparty\qslim\qslim.vpc"
+}
+
+$Project "theora"
+{
+	"thirdparty\theora\theora.vpc"
+}
+
+$Project "vorbis"
+{
+	"thirdparty\vorbis\vorbis.vpc"
+}
+
+$Project "wildmagic"
+{
+	"thirdparty\wildmagic\wildmagic.vpc"
+}
+
+
+$Group "xray_monolith"
+{
+    "xrAPI"
+    "xrCDB"
+    "xrCore"
+    "xrCPU_Pipe"
+    "xrEngine"
+    "xrGame"
+    "xrGame_ServerEnt"
+    "xrGame_ServerEnt_Factory"
+    "xrNetworking"
+    "xrParticles"
+    "xrPhysics"
+    "xrRender_r1"
+    "xrRender_r2"
+    "xrRender_r3"
+    "xrRender_r4"
+    "xrRenderLib"
+    "xrRenderLib_DX9"
+    "xrRenderLib_DX10"
+    "xrSound"
+    "xrXMLParser"
+    "crypto"
+    "editor_properties"
+    "ECore"
+    "editor_actor"
+    "editor_level"
+    "editor_particle"
+    "editor_shader"
+    "ETools"
+    "xrCompress"
+    "xrDO_Light"
+    "xrLC"
+    "xrLC_Light"
+    "cximage"
+    "discord"
+    "dxerr"
+    "jpeg"
+    "lua_extensions"
+    "luabind"
+    "luajit"
+    "luajit_buildvm"
+    "luajit_minilua"
+    "nvdxt"
+    "nvmeshmender"
+    "nvtristrip"
+    "nvtt"
+    "ode"
+    "ogg"
+    "openal"
+    "openssl"
+    "qslim"
+    "theora"
+    "vorbis"
+    "wildmagic"
 }
 
 
