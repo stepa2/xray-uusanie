@@ -273,7 +273,7 @@ $Project "wildmagic"
 }
 
 
-$Group "xray_monolith"
+$Group "xray_uusanie"
 {
     "xrAPI"
     "xrCDB"
