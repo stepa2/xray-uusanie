@@ -1,0 +1,9 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "WILDMAGIC"
+
+$Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
+
+$Project "WildMagic" 
+{
+
+}

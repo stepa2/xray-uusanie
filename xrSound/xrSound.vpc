@@ -1,5 +1,6 @@
 $Macro SRCDIR		".."
 $Macro PROJECT_UPPER  "XRSOUND"
+$Macro OUTBINDIR "$SRCDIR\..\bin\"
 
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 

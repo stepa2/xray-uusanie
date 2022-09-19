@@ -1,0 +1,10 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "EDITOR_PARTICLE"
+$Macro OUTBINDIR "$SRCDIR\..\bin\"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_base.vpc"
+
+$Project "editor_particle" 
+{
+
+}

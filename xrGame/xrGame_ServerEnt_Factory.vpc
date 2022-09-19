@@ -1,5 +1,6 @@
 $Macro SRCDIR		".."
 $Macro PROJECT_UPPER  "XRGAME_SVENT_FACTORY"
+$Macro OUTBINDIR "$SRCDIR\..\bin\"
 
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 

@@ -1,0 +1,10 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "ETOOLS"
+$Macro OUTBINDIR "$SRCDIR\..\bin\"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Project "ETOOLS" 
+{
+
+}

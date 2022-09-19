@@ -1,0 +1,9 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "LUA_EXTENSIONS"
+
+$Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
+
+$Project "lua_extensions" 
+{
+
+}

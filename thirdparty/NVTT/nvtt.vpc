@@ -1,0 +1,9 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "NVTT"
+
+$Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
+
+$Project "nvtt" 
+{
+
+}

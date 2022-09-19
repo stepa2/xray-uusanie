@@ -1,0 +1,9 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "LUABIND"
+
+$Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
+
+$Project "luabind" 
+{
+
+}

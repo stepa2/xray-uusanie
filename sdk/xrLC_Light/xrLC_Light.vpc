@@ -1,0 +1,10 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "XRLC_LIGHT"
+$Macro OUTBINDIR "$SRCDIR\..\bin\"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Project "xrLC_Light" 
+{
+
+}

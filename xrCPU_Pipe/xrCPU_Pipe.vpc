@@ -1,5 +1,6 @@
 $Macro SRCDIR		".."
 $Macro PROJECT_UPPER  "XRCPU_PIPE"
+$Macro OUTBINDIR "$SRCDIR\..\bin\"
 
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 

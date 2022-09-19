@@ -1,0 +1,10 @@
+$Macro SRCDIR		"..\.."
+$Macro PROJECT_UPPER  "LUAJIT_MINILUA"
+$Macro OUTBINDIR "$SRCDIR\build\luajit\"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_base.vpc"
+
+$Project "luajit_minilua" 
+{
+
+}
