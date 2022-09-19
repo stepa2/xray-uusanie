@@ -1,0 +1,9 @@
+$Macro SRCDIR		".."
+$Macro PROJECT_UPPER  "XRRENDER4"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Project "xrRender_R4" 
+{
+
+}

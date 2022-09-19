@@ -1,0 +1,9 @@
+$Macro SRCDIR		".."
+$Macro PROJECT_UPPER  "XRPARTICLES"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Project "xrParticles" 
+{
+
+}

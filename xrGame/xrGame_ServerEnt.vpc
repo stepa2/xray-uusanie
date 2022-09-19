@@ -1,0 +1,9 @@
+$Macro SRCDIR		".."
+$Macro PROJECT_UPPER  "XRGAME_SVENT"
+
+$Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
+
+$Project "xrGame_ServerEnt" 
+{
+
+}

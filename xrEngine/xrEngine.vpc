@@ -1,0 +1,9 @@
+$Macro SRCDIR		".."
+$Macro PROJECT_UPPER  "XRENGINE"
+
+$Include "$SRCDIR\vpc_scripts\source_exe_base.vpc"
+
+$Project "xrEngine" 
+{
+
+}
