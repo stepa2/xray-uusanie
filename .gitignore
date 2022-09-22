@@ -5,3 +5,6 @@
 *.vcxproj.*
 Debug
 Release
+
+/build
+/lib
