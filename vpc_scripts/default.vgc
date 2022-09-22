@@ -92,7 +92,7 @@ $Project "xrRenderLib_DX9"
 
 $Project "xrRenderLib_DX10"
 {
-	"xrRenderLib\xrRenderLib_DX9.vpc"
+	"xrRenderLib\xrRenderLib_DX10.vpc"
 }
 
 $Project "xrSound"

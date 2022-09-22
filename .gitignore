@@ -1,6 +1,6 @@
 /.vs
 *.sln
-*.sln.vpc_deps
+*.sln.*
 *.vcxproj
 *.vcxproj.*
 Debug
