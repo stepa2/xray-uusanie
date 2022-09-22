@@ -1,0 +1,6 @@
+    
+    $Folder "pub"
+    {
+        $File "pub\dpaddr.h"
+        $File "pub\dplay8.h"
+    }

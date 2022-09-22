@@ -1,0 +1,30 @@
+    
+    $Folder "src"
+    {
+        $File "src\ximacfg.cpp"
+        $File "src\ximaenc.cpp"
+        $File "src\ximaexif.cpp"
+        $File "src\ximage.cpp"
+        $File "src\ximainfo.cpp"
+        $File "src\ximaint.cpp"
+        $File "src\ximajpg.cpp"
+        $File "src\ximalpha.cpp"
+        $File "src\ximalyr.cpp"
+        $File "src\ximapal.cpp"
+        $File "src\ximasel.cpp"
+        $File "src\ximath.cpp"
+        $File "src\xmemfile.cpp"
+    }
+    
+    $Folder "pub"
+    {
+        $File "pub\xfile.h"
+        $File "pub\ximacfg.h"
+        $File "pub\ximadef.h"
+        $File "pub\ximage.h"
+        $File "pub\ximaiter.h"
+        $File "pub\ximajpg.h"
+        $File "pub\ximath.h"
+        $File "pub\xiofile.h"
+        $File "pub\xmemfile.h"
+    }

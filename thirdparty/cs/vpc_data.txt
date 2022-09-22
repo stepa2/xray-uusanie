@@ -1,0 +1,15 @@
+    
+    $Folder "pub\lua_studio_backend"
+    {
+        $File "pub\lua_studio_backend\backend.h"
+        $File "pub\lua_studio_backend\engine.h"
+        $File "pub\lua_studio_backend\interfaces.h"
+        $File "pub\lua_studio_backend\library_linkage.h"
+        $File "pub\lua_studio_backend\world.h"
+    }
+    
+    $Folder "pub"
+    {
+        $File "pub\config.h"
+        $File "pub\defines.h"
+    }

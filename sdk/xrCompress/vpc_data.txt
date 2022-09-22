@@ -1,0 +1,10 @@
+    
+    $Folder "src"
+    {
+        $File "src\main.cpp"
+        $File "src\StdAfx.cpp"
+        $File "src\StdAfx.h"
+        $File "src\xrCompress.cpp"
+        $File "src\xrCompress.h"
+        $File "src\xrCompressDifference.cpp"
+    }

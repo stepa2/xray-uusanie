@@ -1,0 +1,21 @@
+    
+    $Folder "pub"
+    {
+        $File "pub\nvapi_lite_common.h"
+        $File "pub\nvapi_lite_d3dext.h"
+        $File "pub\nvapi_lite_salend.h"
+        $File "pub\nvapi_lite_salstart.h"
+        $File "pub\nvapi_lite_sli.h"
+        $File "pub\nvapi_lite_stereo.h"
+        $File "pub\nvapi_lite_surround.h"
+        $File "pub\nvapi.h"
+        $File "pub\NvApiDriverSettings.h"
+        $File "pub\nvHLSLExtns.h"
+        $File "pub\nvHLSLExtnsInternal.h"
+        $File "pub\nvShaderExtnEnums.h"
+    }
+    
+    $Folder "shared"
+    {
+        $File "shared\NvApiDriverSettings.c"
+    }

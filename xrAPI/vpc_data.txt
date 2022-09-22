@@ -1,0 +1,12 @@
+    
+    $Folder "src"
+    {
+        $File "src\stdafx.cpp"
+        $File "src\stdafx.h"
+        $File "src\xrAPI.cpp"
+    }
+    
+    $Folder "pub"
+    {
+        $File "pub\xrAPI.h"
+    }

@@ -1,0 +1,12 @@
+    
+    $Folder "src"
+    {
+        $File "src\bitwise.c"
+        $File "src\framing.c"
+    }
+    
+    $Folder "pub"
+    {
+        $File "pub\ogg.h"
+        $File "pub\os_types.h"
+    }

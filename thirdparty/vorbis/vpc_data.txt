@@ -1,0 +1,91 @@
+    
+    $Folder "src"
+    {
+        $File "src\analysis.c"
+        $File "src\backends.h"
+        $File "src\barkmel.c"
+        $File "src\bitrate.c"
+        $File "src\bitrate.h"
+        $File "src\block.c"
+        $File "src\codebook.c"
+        $File "src\codebook.h"
+        $File "src\codec_internal.h"
+        $File "src\envelope.c"
+        $File "src\envelope.h"
+        $File "src\floor0.c"
+        $File "src\floor1.c"
+        $File "src\highlevel.h"
+        $File "src\info.c"
+        $File "src\lookup_data.h"
+        $File "src\lookup.c"
+        $File "src\lookup.h"
+        $File "src\lpc.c"
+        $File "src\lpc.h"
+        $File "src\lsp.c"
+        $File "src\lsp.h"
+        $File "src\mapping0.c"
+        $File "src\masking.h"
+        $File "src\mdct.c"
+        $File "src\mdct.h"
+        $File "src\misc.h"
+        $File "src\os.h"
+        $File "src\psy.c"
+        $File "src\psy.h"
+        $File "src\psytune.c"
+        $File "src\registry.c"
+        $File "src\registry.h"
+        $File "src\res0.c"
+        $File "src\scales.h"
+        $File "src\sharedbook.c"
+        $File "src\smallft.c"
+        $File "src\smallft.h"
+        $File "src\synthesis.c"
+        $File "src\tone.c"
+        $File "src\vorbisenc.c"
+        $File "src\vorbisfile.c"
+        $File "src\window.c"
+        $File "src\window.h"
+    }
+    
+    $Folder "src\books\uncoupled"
+    {
+        $File "src\books\uncoupled\res_books_uncoupled.h"
+    }
+    
+    $Folder "src\modes"
+    {
+        $File "src\modes\floor_all.h"
+        $File "src\modes\psych_11.h"
+        $File "src\modes\psych_16.h"
+        $File "src\modes\psych_44.h"
+        $File "src\modes\psych_8.h"
+        $File "src\modes\residue_16.h"
+        $File "src\modes\residue_44.h"
+        $File "src\modes\residue_44u.h"
+        $File "src\modes\residue_8.h"
+        $File "src\modes\setup_11.h"
+        $File "src\modes\setup_16.h"
+        $File "src\modes\setup_22.h"
+        $File "src\modes\setup_32.h"
+        $File "src\modes\setup_44.h"
+        $File "src\modes\setup_44u.h"
+        $File "src\modes\setup_8.h"
+        $File "src\modes\setup_X.h"
+    }
+    
+    $Folder "pub"
+    {
+        $File "pub\codec.h"
+        $File "pub\vorbisenc.h"
+        $File "pub\vorbisfile.h"
+    }
+    
+    $Folder "src\books\floor"
+    {
+        $File "src\books\floor\floor_books.h"
+    }
+    
+    $Folder "src\books\coupled"
+    {
+        $File "src\books\coupled\res_books_stereo.h"
+    }

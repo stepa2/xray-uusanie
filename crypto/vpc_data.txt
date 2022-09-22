@@ -1,0 +1,15 @@
+    
+    $Folder "src"
+    {
+        $File "src\crypto.cpp"
+        $File "src\xr_dsa.cpp"
+        $File "src\xr_sha.cpp"
+    }
+    
+    $Folder "pub"
+    {
+        $File "pub\crypto_api_def.h"
+        $File "pub\crypto.h"
+        $File "pub\xr_dsa.h"
+        $File "pub\xr_sha.h"
+    }
