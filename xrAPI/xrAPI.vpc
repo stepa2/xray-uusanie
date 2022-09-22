@@ -6,5 +6,16 @@ $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Project "xrAPI" 
 {
+    $Folder "Source"
+    {
+        $File "src\stdafx.cpp"
+        $File "src\stdafx.h"
+        $File "src\xrAPI.cpp"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\xrAPI.h"
+    }
 
 }

@@ -6,5 +6,14 @@ $Include "$SRCDIR\vpc_scripts\source_exe_base.vpc"
 
 $Project "luajit_buildvm" 
 {
-
+    $Folder "Source"
+    {
+        $File "src_buildvm\buildvm_arch.h"
+        $File "src_buildvm\buildvm_asm.c"
+        $File "src_buildvm\buildvm_fold.c"
+        $File "src_buildvm\buildvm_lib.c"
+        $File "src_buildvm\buildvm_peobj.c"
+        $File "src_buildvm\buildvm.c"
+        $File "src_buildvm\buildvm.h"
+    }
 }

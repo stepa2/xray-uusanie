@@ -6,5 +6,17 @@ $Include "$SRCDIR\vpc_scripts\source_exe_base.vpc"
 
 $Project "xrDO_Light" 
 {
+    $Folder "Source"
+    {
+        $File "src\_d3d_extensions.h"
+        $File "src\cl_log.cpp"
+        $File "src\cl_log.h"
+        $File "src\defines.h"
+        $File "src\resource.h"
+        $File "src\std_classes.h"
+        $File "src\StdAfx.cpp"
+        $File "src\StdAfx.h"
+        $File "src\xrDO_Light.cpp"
+    }
 
 }

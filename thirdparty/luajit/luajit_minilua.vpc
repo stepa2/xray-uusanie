@@ -6,5 +6,8 @@ $Include "$SRCDIR\vpc_scripts\source_exe_base.vpc"
 
 $Project "luajit_minilua" 
 {
-
+    $Folder "Source"
+    {
+        $File "src_minilua\minilua.c"
+    }
 }

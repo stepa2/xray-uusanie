@@ -6,5 +6,23 @@ $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Project "xrCPU_Pipe" 
 {
+    $Folder "Source"
+    {
+        $File "src\PLC.cpp"
+        $File "src\resource.h"
+        $File "src\StdAfx.cpp"
+        $File "src\StdAfx.h"
+        $File "src\ttapi.cpp"
+        $File "src\xrCPU_Pipe.cpp"
+        $File "src\xrSkin2W_SSE.cpp"
+        $File "src\xrSkin2W_thread.cpp"
+        $File "src\xrSkin2W.cpp"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\ttapi.h"
+        $File "pub\xrCPU_Pipe.h"
+    }
 
 }

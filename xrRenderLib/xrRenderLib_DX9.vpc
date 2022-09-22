@@ -6,5 +6,10 @@ $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Project "xrRenderLib_DX9" 
 {
-
+    $Folder "Source"
+    {
+        $File "src_dx9\dx9R_Backend_Runtime.h"
+        $File "src_dx9\dx9r_constants_cache.cpp"
+        $File "src_dx9\dx9r_constants_cache.h"
+    }
 }

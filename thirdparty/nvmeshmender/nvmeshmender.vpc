@@ -5,5 +5,19 @@ $Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
 
 $Project "nvmeshmender" 
 {
+    
+    $Folder "Source"
+    {
+        $File "src\nv_algebra.cpp"
+        $File "src\nv_algebra.h"
+        $File "src\nv_math.h"
+        $File "src\nv_mathdecl.h"
+        $File "src\NVMeshMender.cpp"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\NVMeshMender.h"
+    }
 
 }

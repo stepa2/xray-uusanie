@@ -5,5 +5,31 @@ $Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
 
 $Project "nvdxt" 
 {
+    $Folder "Source"
+    {
+        $File "src\colorconvert.h"
+        $File "src\dds.h"
+        $File "src\ddsTypes.h"
+        $File "src\DXT.cpp"
+        $File "src\dxtlib.h"
+        $File "src\ETextureParams.cpp"
+        $File "src\ETextureParams.h"
+        $File "src\Image_DXTC.cpp"
+        $File "src\Image_DXTC.h"
+        $File "src\NormalMapGen.cpp"
+        $File "src\NV_Common.h"
+        $File "src\nvdxt_options.h"
+        $File "src\nvdxt.cpp"
+        $File "src\NVI_Convolution.cpp"
+        $File "src\NVI_Convolution.h"
+        $File "src\NVI_Image.cpp"
+        $File "src\NVI_Image.h"
+        $File "src\StdAfx.cpp"
+        $File "src\StdAfx.h"
+        $File "src\tga.cpp"
+        $File "src\tga.h"
+        $File "src\tPixel.h"
+        $File "src\tVector.h"
+    }
 
 }

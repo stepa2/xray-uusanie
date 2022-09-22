@@ -6,5 +6,76 @@ $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Project "xrRenderLib_DX10" 
 {
+    $Folder "Source"
+    {
+        $Folder "src_dx10\MSAA"
+        {
+            $File "src_dx10\MSAA\dx10MSAABlender.cpp"
+            $File "src_dx10\MSAA\dx10MSAABlender.h"
+        }
+        
+        $Folder "src_dx10\DX10 Rain"
+        {
+            $File "src_dx10\DX10 Rain\dx10RainBlender.cpp"
+            $File "src_dx10\DX10 Rain\dx10RainBlender.h"
+        }
+        
+        $Folder "src_dx10\StateManager"
+        {
+            $File "src_dx10\StateManager\dx10SamplerStateCache.cpp"
+            $File "src_dx10\StateManager\dx10SamplerStateCache.h"
+            $File "src_dx10\StateManager\dx10ShaderResourceStateCache.cpp"
+            $File "src_dx10\StateManager\dx10ShaderResourceStateCache.h"
+            $File "src_dx10\StateManager\dx10State.cpp"
+            $File "src_dx10\StateManager\dx10State.h"
+            $File "src_dx10\StateManager\dx10StateCache.cpp"
+            $File "src_dx10\StateManager\dx10StateCache.h"
+            $File "src_dx10\StateManager\dx10StateCacheImpl.h"
+            $File "src_dx10\StateManager\dx10StateManager.cpp"
+            $File "src_dx10\StateManager\dx10StateManager.h"
+        }
+        
+        $Folder "src_dx10\3DFluid"
+        {
+            $File "src_dx10\3DFluid\dx103DFluidBlenders.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidBlenders.h"
+            $File "src_dx10\3DFluid\dx103DFluidData.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidData.h"
+            $File "src_dx10\3DFluid\dx103DFluidEmitters.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidEmitters.h"
+            $File "src_dx10\3DFluid\dx103DFluidGrid.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidGrid.h"
+            $File "src_dx10\3DFluid\dx103DFluidManager.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidManager.h"
+            $File "src_dx10\3DFluid\dx103DFluidObstacles.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidObstacles.h"
+            $File "src_dx10\3DFluid\dx103DFluidRenderer.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidRenderer.h"
+            $File "src_dx10\3DFluid\dx103DFluidVolume.cpp"
+            $File "src_dx10\3DFluid\dx103DFluidVolume.h"
+        }
 
+        $File "src_dx10\Blender_Recorder_R3.cpp"
+        $File "src_dx10\dx10BufferUtils.cpp"
+        $File "src_dx10\dx10BufferUtils.h"
+        $File "src_dx10\dx10ConstantBuffer_impl.h"
+        $File "src_dx10\dx10ConstantBuffer.cpp"
+        $File "src_dx10\dx10ConstantBuffer.h"
+        $File "src_dx10\dx10DetailManager_VS.cpp"
+        $File "src_dx10\dx10HW.cpp"
+        $File "src_dx10\dx10R_Backend_Runtime.h"
+        $File "src_dx10\dx10r_constants_cache.cpp"
+        $File "src_dx10\dx10r_constants_cache.h"
+        $File "src_dx10\dx10r_constants.cpp"
+        $File "src_dx10\dx10ResourceManager_Resources.cpp"
+        $File "src_dx10\dx10ResourceManager_Scripting.cpp"
+        $File "src_dx10\dx10SH_RT.cpp"
+        $File "src_dx10\dx10SH_Texture.cpp"
+        $File "src_dx10\dx10StateUtils.cpp"
+        $File "src_dx10\dx10StateUtils.h"
+        $File "src_dx10\dx10Texture.cpp"
+        $File "src_dx10\dx10TextureUtils.cpp"
+        $File "src_dx10\dx10TextureUtils.h"
+        $File "src_dx10\DXCommonTypes.h"
+    }
 }

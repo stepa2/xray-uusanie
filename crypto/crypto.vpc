@@ -6,5 +6,19 @@ $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Project "crypto" 
 {
+    $Folder "Source"
+    {
+        $File "src\crypto.cpp"
+        $File "src\xr_dsa.cpp"
+        $File "src\xr_sha.cpp"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\crypto_api_def.h"
+        $File "pub\crypto.h"
+        $File "pub\xr_dsa.h"
+        $File "pub\xr_sha.h"
+    }
 
 }

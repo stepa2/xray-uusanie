@@ -5,5 +5,17 @@ $Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
 
 $Project "ogg" 
 {
+    
+    $Folder "Source"
+    {
+        $File "src\bitwise.c"
+        $File "src\framing.c"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\ogg.h"
+        $File "pub\os_types.h"
+    }
 
 }

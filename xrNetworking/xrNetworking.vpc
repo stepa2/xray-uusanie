@@ -6,5 +6,31 @@ $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
 
 $Project "xrNetworking" 
 {
+    $Folder "Source"
+    {
+        $File "src\ip_filter.cpp"
+        $File "src\NET_AuthCheck.cpp"
+        $File "src\NET_Client.cpp"
+        $File "src\NET_Common.cpp"
+        $File "src\NET_Compressor.cpp"
+        $File "src\NET_Log.cpp"
+        $File "src\NET_Server.cpp"
+        $File "src\stdafx.cpp"
+        $File "src\stdafx.h"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\ip_filter.h"
+        $File "pub\NET_AuthCheck.h"
+        $File "pub\NET_Client.h"
+        $File "pub\NET_Common.h"
+        $File "pub\NET_Compressor.h"
+        $File "pub\NET_Log.h"
+        $File "pub\NET_Messages.h"
+        $File "pub\NET_PlayersMonitor.h"
+        $File "pub\NET_Server.h"
+        $File "pub\NET_Shared.h"
+    }
 
 }

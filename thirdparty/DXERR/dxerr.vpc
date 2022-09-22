@@ -5,5 +5,14 @@ $Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
 
 $Project "dxerr" 
 {
+    $Folder "Public"
+    {
+        $File "pub\dxerr.h"
+    }
+    
+    $Folder "Source"
+    {
+        $File "src\dxerr.cpp"
+    }
 
 }

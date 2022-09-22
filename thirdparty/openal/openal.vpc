@@ -5,5 +5,20 @@ $Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
 
 $Project "openal" 
 {
-
+    $Folder "Source"
+    {
+        $File "src\al.cpp"
+        $File "src\alc.cpp"
+        $File "src\alList.cpp"
+        $File "src\alList.h"
+        $File "src\OpenAL32.cpp"
+        $File "src\OpenAL32.h"
+        $File "src\resource.h"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\al.h"
+        $File "pub\alc.h"
+    }
 }

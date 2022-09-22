@@ -5,5 +5,18 @@ $Include "$SRCDIR\vpc_scripts\source_lib_base.vpc"
 
 $Project "nvtristrip" 
 {
+    $Folder "Source"
+    {
+        $File "src\NvTriStrip.cpp"
+        $File "src\NvTriStripObjects.cpp"
+        $File "src\VertexCache.cpp"
+    }
+    
+    $Folder "Public"
+    {
+        $File "pub\NvTriStrip.h"
+        $File "pub\NvTriStripObjects.h"
+        $File "pub\VertexCache.h"
+    }
 
 }
